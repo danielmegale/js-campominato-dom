@@ -37,6 +37,27 @@ button{
     margin: 60px auto;
     display: flex;
     flex-wrap: wrap;
+    
+}
+#result{
+    height:500px;
+    width: 500px;
+    background-color:transparent;
+    margin: 0 auto;
+    position: relative;
+    bottom: 560px;
+}
+.none{
+    display: none;
+}
+.block{
+    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 70px;
+    color: #fff;
+    text-shadow: 2px 2px 0px black;
 }
 .cell{
     flex-basis: calc(100% / 10);

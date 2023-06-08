@@ -3,6 +3,7 @@ const grid=document.getElementById('grid');
 const button=document.querySelector('button');
 const level=document.getElementById('level')
 const score=document.getElementById('counter')
+const result=document.getElementById('result')
 //Preparo i dati iniziali 
 const rows=10;
 const cols=10;
@@ -31,10 +32,12 @@ function randomBombs(totalBombs,totalCells) {
     console.log(bombs)
     return bombs;
 }
+
 //Stampiamo la griglia la click
 button.addEventListener('click',function(){
     button.innerText='Restart'
     grid.innerHTML='';
+    result.classList.remove('block');
     let counter='';
     let flag=false
     if(level.value==='easy'){
@@ -50,6 +53,19 @@ button.addEventListener('click',function(){
     const maxScore=totalCells-totalBombs;
     console.log(maxScore)
     const bombs=randomBombs(totalBombs,totalCells);
+    //Rilevo tutte le celle
+    function showCell() {
+    const cells=document.querySelectorAll('.cell');
+    console.log(cells)
+    for(let i=0; i < cells.length; i++){
+        const cell=cells[i];
+        cell.classList.add('clicked');
+        const cellNumer= parseInt(cell.innerText);
+        if(bombs.includes(cellNumer)){
+            cell.classList.add('bomb');
+        }
+    }
+}
     //Stampiamo le celle
     for(let i=1;i<=totalCells;i++){
         const cell =createCell(i);
@@ -64,18 +80,22 @@ button.addEventListener('click',function(){
                 console.log('Hai perso ' +'score: ' + counter)
                 flag=true
                 showCell()
+                result.innerText=('Hai perso '+'score:'+ counter);
+                result.classList.add('block')
             }else{
                 counter++;
                 score.innerText=counter;
             }
             if(counter===maxScore){
-                console.log('YOU WIN')
+                result.innerText=('Hai vinto')
+                result.classList.add('block')
             }
         })
         grid.appendChild(cell);
     }
     score.innerText='';
 })
+
 
 
 
