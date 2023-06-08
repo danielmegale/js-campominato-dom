@@ -10,18 +10,33 @@ const rowsMedium=9;
 const colsMedium=9;
 const rowsHard=7;
 const colsHard=7;
-const bombs=[];
 const totalBombs =16;
 //Totali
 let totalCells='';
 let cells = '';
-const maxScore=totalCells-totalBombs;
-console.log(maxScore)
+//Function
+function createCell(cellNumber){
+    const cell =document.createElement('div');
+    cell.classList.add(cells) ;
+    cell.innerText=cellNumber;
+    return cell;
+}
+//Genero le bombe
+function randomBombs(totalBombs,totalCells) {
+    let bombs=[];
+    while(bombs.length<totalBombs){
+        const numberBobs=Math.floor(Math.random() * totalCells)+1;
+        bombs.push(numberBobs);
+    }
+    console.log(bombs)
+    return bombs;
+}
 //Stampiamo la griglia la click
 button.addEventListener('click',function(){
     button.innerText='Restart'
     grid.innerHTML='';
     let counter='';
+    let flag=false
     if(level.value==='easy'){
         totalCells= rows * cols;
         cells='cell';
@@ -32,21 +47,29 @@ button.addEventListener('click',function(){
         totalCells= rowsHard * colsHard;
         cells='cell-hard';
     }
+    const maxScore=totalCells-totalBombs;
+    console.log(maxScore)
+    const bombs=randomBombs(totalBombs,totalCells);
     //Stampiamo le celle
     for(let i=1;i<=totalCells;i++){
         const cell =createCell(i);
         
         cell.addEventListener('click',function () {
-            if(cell.classList.contains('clicked')) return;
+            if(flag===true||cell.classList.contains('clicked')) return;
             cell.classList.add('clicked');
-            console.log(i);
             //Controllo se la cell è una bomba
             const isABomb=bombs.includes(parseInt(cell.innerText))
             if(isABomb){
-                cell.classList.add('.bomb')
+                cell.classList.add('bomb')
+                console.log('Hai perso ' +'score: ' + counter)
+                flag=true
+                showCell()
             }else{
                 counter++;
                 score.innerText=counter;
+            }
+            if(counter===maxScore){
+                console.log('YOU WIN')
             }
         })
         grid.appendChild(cell);
@@ -54,22 +77,5 @@ button.addEventListener('click',function(){
     score.innerText='';
 })
 
-//Function
-function createCell(cellNumber){
-    const cell =document.createElement('div');
-    cell.classList.add(cells) ;
-    cell.innerText=cellNumber;
-    return cell;
-}
-//Genero le bombe
-function randomBobs(totalBombs) {
-    let bombs=[];
-    while(bombs.length<totalBombs){
-
-    }
-    const numberBobs=Math.floor(Math.random() * 1);
-    console.log(numberBobs)
-    return bombs;
-}
 
 
