@@ -14,7 +14,7 @@ const colsHard=7;
 const totalBombs =16;
 //Totali
 let totalCells='';
-let cells = '';
+let cells ='';
 //Function
 function createCell(cellNumber){
     const cell =document.createElement('div');
@@ -45,27 +45,45 @@ button.addEventListener('click',function(){
         cells='cell';
     }else if (level.value==='medium'){
         totalCells= rowsMedium * colsMedium;
-        cells='cell-medium';
+        cells='medium';
     }else if(level.value==='hard'){
         totalCells= rowsHard * colsHard;
-        cells='cell-hard';
+        cells='hard';
     }
     const maxScore=totalCells-totalBombs;
     console.log(maxScore)
     const bombs=randomBombs(totalBombs,totalCells);
     //Rilevo tutte le celle
     function showCell() {
-    const cells=document.querySelectorAll('.cell');
-    console.log(cells)
-    for(let i=0; i < cells.length; i++){
-        const cell=cells[i];
-        cell.classList.add('clicked');
-        const cellNumer= parseInt(cell.innerText);
-        if(bombs.includes(cellNumer)){
-            cell.classList.add('bomb');
+        const cells=document.querySelectorAll('.cell');
+        for(let i=0; i < cells.length; i++){
+            const cell=cells[i];
+            cell.classList.add('clicked');
+            const cellNumer= parseInt(cell.innerText);
+            if(bombs.includes(cellNumer)){
+                cell.classList.add('bomb');
+            }
+        }
+        const cellsMedium=document.querySelectorAll('.medium');
+        for(let i=0; i < cellsMedium.length; i++){
+            const cell=cellsMedium[i];
+            cell.classList.add('clicked');
+            const cellNumer= parseInt(cell.innerText);
+            if(bombs.includes(cellNumer)){
+                cell.classList.add('bomb');
+            }
+        }
+        const cellsHard=document.querySelectorAll('.hard');
+        for(let i=0; i < cellsHard.length; i++){
+            const cell=cellsHard[i];
+            cell.classList.add('clicked');
+            const cellNumer= parseInt(cell.innerText);
+            if(bombs.includes(cellNumer)){
+                cell.classList.add('bomb');
+            }
         }
     }
-}
+    
     //Stampiamo le celle
     for(let i=1;i<=totalCells;i++){
         const cell =createCell(i);

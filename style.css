@@ -75,7 +75,7 @@ button{
 .cell.clicked.bomb{
     background-color: red;
 }
-.cell-medium{
+.medium{
     flex-basis: calc(100% / 9);
     height:calc(100% / 9) ;
     border: 2px solid black;
@@ -84,13 +84,13 @@ button{
     justify-content: center;
     align-items: center;
 }
-.cell-medium.clicked{
+.medium.clicked{
     background-color: dodgerblue;
 }
-.cell-medium.clicked.bomb{
+.medium.clicked.bomb{
     background-color: red;
 }
-.cell-hard{
+.hard{
     flex-basis: calc(100% / 7);
     height:calc(100% / 7) ;
     border: 2px solid black;
@@ -99,9 +99,9 @@ button{
     justify-content: center;
     align-items: center;
 }
-.cell-hard.clicked{
+.hard.clicked{
     background-color: dodgerblue;
 }
-.cell-hard.clicked.bomb{
+.hard.clicked.bomb{
     background-color: red;
 }
