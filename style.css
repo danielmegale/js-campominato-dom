@@ -1,0 +1,86 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+/* Generics */
+body{
+    background-color:#7FFFD4;
+}
+header{
+    height: 50px;
+    background-color: #fff;
+}
+button{
+    height: 50%;
+    padding: 0px 22px;
+    margin-right: 10px;
+}
+/* Utilitis */
+.d-flex{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.container{
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+}
+#score{
+    font-size: 50px;
+}
+#grid{
+    width: 500px;
+    height: 500px;
+    border: 1px solid black;
+    margin: 60px auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+.cell{
+    flex-basis: calc(100% / 10);
+    height:calc(100% / 10) ;
+    border: 2px solid black;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.cell.clicked{
+    background-color: dodgerblue;
+}
+.cell.clicked.bomb{
+    background-color: red;
+}
+.cell-medium{
+    flex-basis: calc(100% / 9);
+    height:calc(100% / 9) ;
+    border: 2px solid black;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cell-medium.clicked{
+    background-color: dodgerblue;
+}
+.cell-medium.clicked.bomb{
+    background-color: red;
+}
+.cell-hard{
+    flex-basis: calc(100% / 7);
+    height:calc(100% / 7) ;
+    border: 2px solid black;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cell-hard.clicked{
+    background-color: dodgerblue;
+}
+.cell-hard.clicked.bomb{
+    background-color: red;
+}
